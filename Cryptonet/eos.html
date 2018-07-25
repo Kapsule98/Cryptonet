@@ -1,0 +1,98 @@
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="cardstylesheet.css">
+</head>
+<body>
+<script>var json = new XMLHttpRequest(); // start a new variable to store the JSON in
+json.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    // if HTTP header 200 - ok
+    var Array = JSON.parse(this.responseText); 
+	var obj = Array[4];
+		document.getElementById("rank").innerHTML = obj.rank;
+		document.getElementById("name").innerHTML = obj.name;
+		document.getElementById("symbol").innerHTML = obj.symbol;
+		document.getElementById("priceusd").innerHTML = obj.price_usd;
+		document.getElementById("pricebtc").innerHTML = obj.price_btc;
+		document.getElementById("marketcap").innerHTML = obj.market_cap_usd;
+		document.getElementById("availablesupply").innerHTML = obj.available_supply;
+		document.getElementById("totalsupply").innerHTML = obj.total_supply;
+		document.getElementById("maxsupply").innerHTML = obj.max_supply;
+		document.getElementById("change1h").innerHTML = obj.percent_change_1h;
+		document.getElementById("change24h").innerHTML = obj.percent_change_24h;
+		document.getElementById("change7d").innerHTML = obj.percent_change_7d;
+  }
+};
+json.open(
+  "GET", // method
+  "https://api.coinmarketcap.com/v1/ticker/?limit=10", // url
+  true // async
+); // initialise the request
+json.send(); //send request
+</script>
+<table>
+<tr>
+<td colspan="2"> <img src="data:image/png;base64,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"> </img></td>
+</tr>
+
+<tr>
+<td > RANK </td>
+<td id="rank"></td>
+</tr>
+
+<tr>
+<td>NAME</td>
+<td id="name"></td>
+</tr>
+
+<tr>
+<td>SYMBOL</td>
+<td id="symbol"></td>
+</tr>
+
+<tr>
+<td rowspan="2"> PRICE  </td>
+<td>$ <span id="priceusd"></span></td>
+</tr>
+<tr>
+<td>BTC <span id="pricebtc"></span></td>
+</tr>
+
+<tr>
+<td>MARKET CAP</td>
+<td>$ <span id="marketcap"></span></td>
+</tr>
+
+<tr>
+<td>AVAILABLE SUPPLY</td>
+<td id="availablesupply"></td>
+</tr>
+
+<tr>
+<td>TOTAL SUPPLY</td>
+<td id="totalsupply"></td>
+</tr>
+
+<tr>
+<td>MAX SUPPLY</td>
+<td id="maxsupply"></td>
+</tr>
+
+<tr>
+<td>PERCENT CHANGE 1hr</td>
+<td id="change1h"> </td>
+</tr>
+
+<tr>
+<td>PERCENT CHANGE 24hr </td>
+<td id="change24h"></td>
+</tr>
+
+<tr>
+<td>PERCENT CHANGE 7d </td>
+<td id="change7d"></td>
+</tr>
+</table>
+</body>
+</html>

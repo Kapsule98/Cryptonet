@@ -1,0 +1,13 @@
+table,td,th
+{
+	width:100%;
+	border: 1px solid black;
+	border-collapse:collapse;
+	align:center;
+	
+}
+body
+{
+	background-color:#dddddd;
+	
+}
